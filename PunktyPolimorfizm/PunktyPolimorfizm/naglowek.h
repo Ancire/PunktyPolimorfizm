@@ -4,47 +4,53 @@
 #include <vector>
 #include <string>
 #include <fstream>
-
+#include <sstream>
 
 using namespace std;
 
-class Vec2
+class Vec {
+public:
+	virtual void print() = 0;
+	virtual double modul() = 0;
+};
+
+class Vec1 : public Vec
+{
+
+protected:
+	double x;
+
+
+public:
+
+	Vec1();
+	Vec1(double a);
+
+
+	void print();
+	void setX(double a);
+
+
+	double getX();
+	double modul();
+};
+
+class Vec2 : public Vec1
 {
 protected:
-	int x,y;
+	double y;
 
 public:
 
 	Vec2();
-	Vec2(int a, int b);
+	Vec2(double a, double b);
 
 
 	void print();
-	void setX(int a);
-	void setY(int a);
+	void setY(double a);
 
-	int getX();
-	int getY();
+	double getY();
 	double modul();
-};
-
-class Vec3 : public Vec2
-{
-protected:
-	int z;
-
-public:
-
-	Vec3();
-	Vec3(int a, int b, int c);
-
-
-	void print();
-	void setZ();
-
-	int getZ();
-
-	double dlugosc();
 };
 
 

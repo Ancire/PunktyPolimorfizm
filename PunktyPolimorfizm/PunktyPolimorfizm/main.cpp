@@ -5,6 +5,8 @@ using namespace std;
 int main()
 {
 
+
+
 	cout << "\n";
 	vector<string> punkty;
 	vector<string> poprawne_punkty;
@@ -18,7 +20,7 @@ int main()
 
 	poprawne_punkty = correctData(punkty);
 
-	cout << "size " << poprawne_punkty.size() << endl;
+	//cout << "size " << poprawne_punkty.size() << endl;
 	for (int i = 0; i < poprawne_punkty.size(); i++) {
 		cout << poprawne_punkty[i] << endl;
 	}
