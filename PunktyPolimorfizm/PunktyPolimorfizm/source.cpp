@@ -2,35 +2,6 @@
 
 //VEC 1
 
-Vec1::Vec1()
-{
-	setX(0);
-}
-Vec1::Vec1(double a)
-{
-	setX(a);
-}
-
-void Vec1::print()
-{
-	cout << getX() << ", ";
-}
-
-void Vec1::setX(double a)
-{
-	x = a;
-}
-
-double Vec1::getX()
-{
-	return x;
-}
-
-double Vec1::modul()
-{
-	return sqrt(getX()*getX());
-}
-
 
 //VEC 2
 
@@ -39,7 +10,7 @@ Vec2::Vec2()
 	setX(0);
 	setY(0);
 }
-Vec2::Vec2(double a, double b)
+Vec2::Vec2(int a, int b)
 {
 	setX(a);
 	setY(b);
@@ -50,12 +21,22 @@ void Vec2::print()
 	cout << getX() << ", " << getY() << ", ";
 }
 
-void Vec2::setY(double a)
+void Vec2::setX(int a)
+{
+	x = a;
+}
+
+void Vec2::setY(int a)
 {
 	y = a;
 }
 
-double Vec2::getY()
+int Vec2::getX()
+{
+	return x;
+}
+
+int Vec2::getY()
 {
 	return y;
 }
@@ -63,4 +44,46 @@ double Vec2::getY()
 double Vec2::modul()
 {
 	return sqrt(getX()*getX() + getY()*getY());
+}
+
+
+vector<string> getRawData()
+{
+	fstream plik;
+	string linia;
+	vector<string> punkty;
+	plik.open("dane.txt",ios::in);
+	if (!plik.good()) {
+		cout << "Blad odczytu danych!\n";
+	}
+	else
+	{
+		while (getline(plik,linia))
+		{
+			punkty.push_back(linia);
+		}
+	}
+	plik.close();
+	return punkty;
+}
+
+
+
+vector<string> correctData(vector<string> &dane)
+{
+	vector<string> wynik;
+
+	for (int i = 0; i < dane.size(); i++)
+	{
+		if (dane[i].length() < 1 || dane[i].length() > 2)
+		{
+			cout << "Usunieto bledny punktu o wspolzednych: " << dane[i] << endl;
+		}
+		else
+		{
+			wynik.push_back(dane[i]);
+		}
+	}
+
+	return wynik;
 }
