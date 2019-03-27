@@ -54,7 +54,7 @@ public:
 };
 
 
-vector<string> getRawData();
+vector<string> getRawData(const string filePath);
 vector<string> correctData(vector<string> &dane);
 
 void writeData();

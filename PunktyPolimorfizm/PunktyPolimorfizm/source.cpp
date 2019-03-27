@@ -65,12 +65,12 @@ double Vec2::modul()
 	return sqrt(getX()*getX() + getY()*getY());
 }
 
-vector<string> getRawData()
+vector<string> getRawData(const string filePath)
 {
 	fstream plik;
 	string linia;
 	vector<string> punkty;
-	plik.open("dane.txt",ios::in);
+	plik.open(filePath,ios::in);
 	if (!plik.good()) {
 		cout << "Blad odczytu danych!\n";
 	}
