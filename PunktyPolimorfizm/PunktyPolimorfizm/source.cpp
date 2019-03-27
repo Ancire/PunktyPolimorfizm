@@ -72,11 +72,26 @@ vector<string> getRawData()
 vector<string> correctData(vector<string> &dane)
 {
 	vector<string> wynik;
-
+	int *spacje = new int[dane.size()+1];
+	for (int i = 0; i < dane.size(); i++) 
+	{
+		spacje[i] = 0;
+	}
 	for (int i = 0; i < dane.size(); i++)
 	{
-		if (dane[i].length() < 1 || dane[i].length() > 2)
+		for (int j = 0; j < dane[i].length(); j++)
 		{
+			if (dane[i][j] == ' ') {
+				spacje[i]+=1;
+			}
+		}
+	}
+	cout << dane.size() << endl;
+	for (int i = 0; i < dane.size(); i++)
+	{
+		if (spacje[i]>2 || spacje[i]<1)
+		{
+			cout << "dane length: " << dane[i].length() << "  spacje: " << spacje[i] << endl;
 			cout << "Usunieto bledny punktu o wspolzednych: " << dane[i] << endl;
 		}
 		else
@@ -85,5 +100,7 @@ vector<string> correctData(vector<string> &dane)
 		}
 	}
 
+	delete[] spacje;
+	
 	return wynik;
 }
