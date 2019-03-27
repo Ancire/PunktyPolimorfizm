@@ -8,6 +8,7 @@ int main()
 	cout << "\n";
 	vector<string> punkty;
 	vector<string> poprawne_punkty;
+
 	punkty = getRawData();
 	cout << "Dane z pliku:\n";
 	for (int i = 0; i < punkty.size(); i++)
@@ -21,6 +22,8 @@ int main()
 	for (int i = 0; i < poprawne_punkty.size(); i++) {
 		cout << poprawne_punkty[i] << endl;
 	}
+
+	//writeData();
 
 	
 	

@@ -104,3 +104,26 @@ vector<string> correctData(vector<string> &dane)
 	
 	return wynik;
 }
+
+void writeData()
+{
+	fstream plik;
+	string linia;
+	plik.open("dane.txt", ios::app);
+	if (!plik.good())
+	{
+		cout << "Blad odczytu danych z pliku \n";
+	}
+	cout << "aby przerwac wczytywanie wprowadz dowolny znak w nowej linii\n";
+	cout << "podaj punkt >";
+	while (getline(cin, linia))
+	{
+		if (linia[0] == '#')
+			break;
+		cout << "podaj punkt >";
+		plik << linia<<endl;
+	}
+
+	plik.close();
+
+}

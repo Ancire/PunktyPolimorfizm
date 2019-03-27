@@ -50,3 +50,5 @@ public:
 
 vector<string> getRawData();
 vector<string> correctData(vector<string> &dane);
+
+void writeData();
