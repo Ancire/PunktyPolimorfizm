@@ -14,7 +14,7 @@ void Punkt_1D::wyswietl()
 
 double Punkt_1D::dlugosc()
 {
-	return x;
+	return sqrt(x*x);
 }
 
 void Punkt_1D::zapisz_do_pliku()
@@ -128,7 +128,7 @@ vector<string> wczytajDanePlik(const string path)
 	vector<string> dane;
 	plik.open(path, ios::in);
 
-	if (!plik.good() == false) {
+	if (!plik.good() == true) {
 		cout << "Blad odczytu pliku!\n";
 	}
 
@@ -139,7 +139,7 @@ vector<string> wczytajDanePlik(const string path)
 	}
 
 	plik.close();
-
+	cout << "Dane z pliku zostaly wczytane poprawnie. \n";
 	return dane;
 }
 
@@ -224,4 +224,29 @@ vector<vector<int>> vecStrintToInt(vector<vector<string>> &napisy)
 	}
 
 	return cyfry;
+}
+
+void sortujPunkty(Punkt **punkty, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 1; j < size-i; j++)
+		{
+			if (punkty[j]->dlugosc() < punkty[j - 1]->dlugosc())
+			{
+				swap(punkty[j], punkty[j - 1]);
+			}
+		}
+	}
+}
+
+void wyswietlPunkty(Punkt **punkty, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		punkty[i]->wyswietl();
+		cout << "   dlugosc = ";
+		cout << punkty[i]->dlugosc();
+		cout << endl;
+	}
 }

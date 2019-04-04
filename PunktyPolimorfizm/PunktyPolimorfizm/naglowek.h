@@ -63,5 +63,8 @@ int spacje(string napis);
 vector<string> wczytajDanePlik(const string path);
 vector<string> wczytajDaneUzytkownika();
 vector<string> podzielNaLiczby(string napis);
-
 vector<vector<int>> vecStrintToInt(vector<vector<string>> &napisy);
+
+void sortujPunkty(Punkt **punkty, int size);
+
+void wyswietlPunkty(Punkt **punkty, int size);
