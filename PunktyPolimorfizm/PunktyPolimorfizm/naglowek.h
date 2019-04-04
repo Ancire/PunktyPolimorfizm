@@ -1,60 +1,67 @@
 #pragma once
-#include <iostream>
-#include <cmath>
-#include <vector>
-#include <string>
+
+#include<iostream>
+#include<cmath>
 #include <fstream>
-#include <sstream>
+#include <string>
+#include <vector>
+#include <cstdlib>
 
 using namespace std;
 
-class Vec {
+class Punkt
+{
 public:
-	virtual void print() = 0;
-	virtual double modul() = 0;
+	virtual void wyswietl() = 0;
+	virtual double dlugosc() = 0;
+
+	virtual void zapisz_do_pliku() = 0;
 };
 
-class Vec1 : public Vec
+class Punkt_1D : public Punkt
 {
-
-protected:
+public:
 	double x;
 
+	Punkt_1D(double a);
+	void wyswietl();
 
-public:
+	double dlugosc();
 
-	Vec1();
-	Vec1(double a);
-
-
-	void print();
-	void setX(double a);
-
-
-	double getX();
-	double modul();
+	void zapisz_do_pliku();
 };
 
-class Vec2 : public Vec1
+class Punkt_2D : public Punkt
 {
-protected:
-	double y;
-
 public:
+	double x, y;
 
-	Vec2();
-	Vec2(double a, double b);
+	Punkt_2D(double a, double b);
+	void wyswietl();
 
+	double dlugosc();
 
-	void print();
-	void setY(double a);
-
-	double getY();
-	double modul();
+	void zapisz_do_pliku();
 };
 
+class Punkt_3D : public Punkt
+{
+public:
+	double x, y, z;
 
-vector<string> getRawData(const string filePath);
-vector<string> correctData(vector<string> &dane);
+	Punkt_3D(double a, double b, double c);
 
-void writeData();
+	void wyswietl();
+
+	double dlugosc();
+
+	void zapisz_do_pliku();
+};
+
+int spacje(string napis);
+
+vector<string> wczytajDanePlik(const string path);
+vector<string> wczytajDaneUzytkownika();
+vector<string> podzielNaLiczby(string napis);
+
+vector<vector<int>> vecStrintToInt(vector<vector<string>> &napisy);

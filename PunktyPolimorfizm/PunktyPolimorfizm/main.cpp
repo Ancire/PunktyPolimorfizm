@@ -1,34 +1,61 @@
 #include "naglowek.h"
 
+
 using namespace std;
 
+const string filePath = "";
 int main()
 {
 
+	//TODO poprawic wprowadzanie danych aby usuwalo sie wielokrotnosci spacji wprowadzonych przez uzytkownika
 
-	const string filePath = "C:/Users/grimb/source/repos/NewRepo/PunktyPolimorfizm/PunktyPolimorfizm/wektory.txt";
-	cout << "\n";
-	vector<string> punkty;
-	vector<string> poprawne_punkty;
+	vector<string> dane;
+	vector<vector<string>> liczby;
+	vector<vector<int>> cyfry;
 
-	punkty = getRawData(filePath);
-	cout << "Dane z pliku:\n";
-	for (int i = 0; i < punkty.size(); i++)
+
+	dane = wczytajDaneUzytkownika();
+
+
+	for (int i = 0; i < dane.size(); i++)
 	{
-		cout << punkty[i] << endl;
+		liczby.push_back(podzielNaLiczby(dane[i]));
 	}
 
-	poprawne_punkty = correctData(punkty);
+	cyfry = vecStrintToInt(liczby);
+	
+	Punkt **punkt = new Punkt*[liczby.size()];
 
-	//cout << "size " << poprawne_punkty.size() << endl;
-	for (int i = 0; i < poprawne_punkty.size(); i++) {
-		cout << poprawne_punkty[i] << endl;
+	for (int i = 0; i < cyfry.size(); i++)
+	{
+		switch (cyfry[i].size())
+		{
+		case 1:
+		{
+			punkt[i] = new Punkt_1D(cyfry[i][0]);
+		}break;
+		case 2:
+		{
+			punkt[i] = new Punkt_2D(cyfry[i][0], cyfry[i][1]);
+		}break;
+		case 3:
+		{
+			punkt[i] = new Punkt_3D(cyfry[i][0], cyfry[i][1], cyfry[i][2]);
+		}break;
+		default: {
+			cout << "nie dzialam";
+		}break;
+
+		}
 	}
 
-	//writeData();
+	for (int i = 0; i < cyfry.size(); i++)
+	{
+		punkt[i]->wyswietl();
+		punkt[i]->zapisz_do_pliku();
+		cout << endl;
+	}
 
-	
-	
 	system("pause");
 	return 0;
 }
