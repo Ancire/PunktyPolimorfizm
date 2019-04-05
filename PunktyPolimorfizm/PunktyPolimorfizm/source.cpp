@@ -250,3 +250,95 @@ void wyswietlPunkty(Punkt **punkty, int size)
 		cout << endl;
 	}
 }
+
+void wyczyscPlik(const string path)
+{
+	fstream plik;
+	plik.open(path,ios::trunc);
+	if (!plik.good() == true) {
+		cout << "Blad odczytu pliku!\n";
+	}
+
+	cout << "Dane z pliku zostaly usuniete!\n";
+	plik.close();
+}
+void drawMenu()
+{
+	cout << "*********************************************************************\n";
+	cout << "*                          MENU GLOWNE                              *\n";
+	cout << "*                                                                   *\n";
+	cout << "*1.Wczytaj dane z pliku.                                            *\n";
+	cout << "*2.Wczytaj dane od uzytkownika                                      *\n";
+	cout << "*3.Wyczysc dane w pliku                                             *\n";
+	cout << "*4.Wyswietl dane obecnie uzywane                                    *\n";
+	cout << "*5.Posortuj oraz wyswietl dane                                      *\n";
+	cout << "*5.Zakoncz program                                                  *\n";
+	cout << "*                                                                   *\n";
+	cout << "*********************************************************************\n";
+	cout << ">";
+}
+
+void menu()
+{
+	const string path = "C:/Users/grimb/Desktop/dane.txt";
+	char wybor;
+	vector<string> dane;
+	vector<vector<string>> napisy;
+	vector<vector<int>> liczby;
+	vector<Punkt_1D> punkty_1d;
+	vector<Punkt_2D> punkty_2d;
+	vector<Punkt_3D> punkty_3d;
+
+	Punkt **punkty = nullptr;
+	while (1)
+	{
+		system("cls");
+		drawMenu();
+		wybor = getchar();
+
+		switch (wybor)
+		{
+		case '1':
+		{
+			dane = wczytajDanePlik(path);
+			for (int i = 0; i < dane.size(); i++)
+			{
+				napisy.push_back(podzielNaLiczby(dane[i]));
+			}
+			liczby = vecStrintToInt(napisy);
+			punkty = new Punkt*[liczby.size()];
+
+		}break;
+		case '2':
+		{
+			dane = wczytajDaneUzytkownika();
+		}break;
+		case '3':
+		{
+			wyczyscPlik(path);
+		}break;
+		case '4'
+		{
+			if (dane.empty())
+			{
+				cout << "Brak danych wprowadz dane badz wczytaj je z pliku.\n";
+			}
+			else
+			{
+				if (punkty != nullptr)
+					wyswietlPunkty(punkty, liczby.size());
+			}
+		}break;
+		case '5':
+		{
+			if (punkty != nullptr) {
+				sortujPunkty(punkty, liczby.size());
+				wyswietlPunkty(punkty, liczby.size());
+			}
+
+		}
+		default:
+			break;
+		}
+	}
+}

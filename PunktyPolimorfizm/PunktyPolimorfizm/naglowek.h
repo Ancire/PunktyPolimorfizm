@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <conio.h>
 
 using namespace std;
 
@@ -68,3 +69,8 @@ vector<vector<int>> vecStrintToInt(vector<vector<string>> &napisy);
 void sortujPunkty(Punkt **punkty, int size);
 
 void wyswietlPunkty(Punkt **punkty, int size);
+
+void wyczyscPlik(const string path);
+void drawMenu();
+
+void menu();
