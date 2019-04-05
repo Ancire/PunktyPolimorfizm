@@ -7,6 +7,7 @@
 #include <vector>
 #include <cstdlib>
 #include <conio.h>
+#include <string>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ class Punkt_1D : public Punkt
 {
 public:
 	double x;
-
+	Punkt_1D();
 	Punkt_1D(double a);
 	void wyswietl();
 
@@ -36,7 +37,7 @@ class Punkt_2D : public Punkt
 {
 public:
 	double x, y;
-
+	Punkt_2D();
 	Punkt_2D(double a, double b);
 	void wyswietl();
 
@@ -49,7 +50,7 @@ class Punkt_3D : public Punkt
 {
 public:
 	double x, y, z;
-
+	Punkt_3D();
 	Punkt_3D(double a, double b, double c);
 
 	void wyswietl();
@@ -59,7 +60,12 @@ public:
 	void zapisz_do_pliku();
 };
 
+bool liczba(string napis);
+
 int spacje(string napis);
+
+void usunSpacje(string &napis);
+bool sprawdzPoprawnoscNapisu(string napis);
 
 vector<string> wczytajDanePlik(const string path);
 vector<string> wczytajDaneUzytkownika();
@@ -74,3 +80,9 @@ void wyczyscPlik(const string path);
 void drawMenu();
 
 void menu();
+
+void inicjalizujPunkty(vector<vector<int>> liczby, Punkt **punkty, int size, vector<Punkt_2D> &pkt2, vector<Punkt_3D> &pkt3);
+
+bool wyznacznik_2(Punkt_2D a, Punkt_2D b, Punkt_2D c);
+
+void wspolniowos_2D(vector<Punkt_2D> punkty);
