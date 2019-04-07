@@ -11,6 +11,9 @@
 
 using namespace std;
 
+void autor();
+
+
 class Punkt
 {
 public:
