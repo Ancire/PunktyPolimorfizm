@@ -197,8 +197,11 @@ vector<string> wczytajDanePlik(const string path)
 	while (!plik.eof())
 	{
 		getline(plik, linia);
-		dane.push_back(linia);
+		if (linia.length() > 0) {
+			dane.push_back(linia);
+		}
 	}
+	
 
 	plik.close();
 	cout << "Dane z pliku zostaly wczytane poprawnie. \n";
@@ -323,27 +326,30 @@ void wyswietlPunkty(Punkt **punkty, int size)
 void wyczyscPlik(const string path)
 {
 	fstream plik;
-	plik.open(path,ios::trunc);
+	plik.open(path, ios::out | ios::trunc);
 	if (!plik.good() == true) {
 		cout << "Blad odczytu pliku!\n";
 	}
-
+	plik.flush();
 	cout << "Dane z pliku zostaly usuniete!\n";
+	_getch();
 	plik.close();
 }
 void drawMenu()
 {
-	cout << "*********************************************************************\n";
-	cout << "*                          MENU GLOWNE                              *\n";
-	cout << "*                                                                   *\n";
-	cout << "*1.Wczytaj dane z pliku.                                            *\n";
-	cout << "*2.Wczytaj dane od uzytkownika                                      *\n";
-	cout << "*3.Wyczysc dane w pliku                                             *\n";
-	cout << "*4.Wyswietl dane obecnie uzywane                                    *\n";
-	cout << "*5.Posortuj oraz wyswietl dane                                      *\n";
-	cout << "*6.Ilosc 2 wymiarowych wspolniowych punktow                         *\n";
-	cout << "*                                                                   *\n";
-	cout << "*********************************************************************\n";
+	cout << "\311\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\273\n";
+	cout << "\272                          MENU G\235\340WNE                               \272 \n";
+	cout << "\272                                                                    \272 \n";
+	cout << "\272 1.Wczytaj dane z pliku.                                            \272 \n";
+	cout << "\272 2.Wczytaj dane od u\276ytkownika.                                     \272 \n";
+	cout << "\272 3.Wyczy\230\206 dane z pliku.                                            \272 \n";
+	cout << "\272 4.Wy\230wietl dane obecnie u\276ywane.                                   \272 \n";
+	cout << "\272 5.Posortuj oraz wy\230wietl dane.                                     \272 \n";
+	cout << "\272 6.Ilo\230\206 2 wymiarowych wsp\242\210liniowych punkt\242w.                      \272 \n";
+	cout << "\272 7.ILo\230\206 3 wymiarowych wspolniwoych punktow.                        \272 \n";
+	cout << "\272 8.Zako\344cz program.                                                 \272 \n";
+	cout << "\272                                                                    \272 \n";
+	cout << "\310\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\274\n";
 	cout << ">";
 }
 
@@ -439,11 +445,29 @@ void menu()
 			}
 			else
 			{
-				cout << "Brak danych do srotowania wprowadz dane i sprobuj ponownie. \n";
+				cout << "Brak danych, wprowadz dane i sprobuj ponownie. \n";
 			}
 			_getch();
 		}break;
+		case '7':
+		{
 
+		}break;
+		case '8':
+		{
+			char a;
+			cout << "Czy na pewno chcesz zakonczyc program? T/N \n";
+			cout << ">";
+			cin >> a;
+			if (a == 'T' || a == 't') {
+				exit(0);
+			}
+			else
+			{
+
+			}
+			
+		}break;
 		default:
 			break;
 		}

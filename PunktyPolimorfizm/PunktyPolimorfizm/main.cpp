@@ -1,5 +1,5 @@
 #include "naglowek.h"
-#include "ramka.h"
+
 
 using namespace std;
 
@@ -9,7 +9,7 @@ int main()
 {
 
 	//TODO poprawic wprowadzanie danych aby usuwalo sie wielokrotnosci spacji wprowadzonych przez uzytkownika
-	autor();
+
 	menu();
 
 
