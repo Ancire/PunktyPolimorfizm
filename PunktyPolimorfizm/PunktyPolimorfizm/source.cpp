@@ -337,7 +337,7 @@ void drawMenu()
 	cout << "*                          MENU GLOWNE                              *\n";
 	cout << "*                                                                   *\n";
 	cout << "*1.Wczytaj dane z pliku.                                            *\n";
-	cout << "*22.Wczytaj dane od uzytkownika                                      *\n";
+	cout << "*2.Wczytaj dane od uzytkownika                                      *\n";
 	cout << "*3.Wyczysc dane w pliku                                             *\n";
 	cout << "*4.Wyswietl dane obecnie uzywane                                    *\n";
 	cout << "*5.Posortuj oraz wyswietl dane                                      *\n";

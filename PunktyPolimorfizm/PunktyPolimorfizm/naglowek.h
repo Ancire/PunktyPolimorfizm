@@ -24,7 +24,6 @@ class Punkt_1D : public Punkt
 {
 public:
 	double x;
-	Punkt_1D();
 	Punkt_1D(double a);
 	void wyswietl();
 
@@ -37,7 +36,6 @@ class Punkt_2D : public Punkt
 {
 public:
 	double x, y;
-	Punkt_2D();
 	Punkt_2D(double a, double b);
 	void wyswietl();
 
