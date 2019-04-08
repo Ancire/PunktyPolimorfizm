@@ -483,7 +483,20 @@ void menu()
 		}break;
 		case '7':
 		{
-
+			if (punkty != nullptr) {
+				if (punkty_3d.size() > 2) {
+					wspolniowosc_3D(punkty_3d);
+				}
+				else
+				{
+					cout << "Brak wystarczajacej liczby danych aby przeprowadzic obliczenia. \n";
+				}
+			}
+			else
+			{
+				cout << "Brak danych, wprowadz dane i sprobuj ponownie. \n";
+			}
+			_getch();
 		}break;
 		case '8':
 		{
@@ -577,4 +590,50 @@ void wspolniowos_2D(vector<Punkt_2D> punkty)
 	}
 
 	cout << "W danym zbiorze jest " << count << " trojek punktow wspolniowych.\n";
+}
+
+void wspolniowosc_3D(vector<Punkt_3D> punkty)
+{
+	int count = 0;
+	cout << endl;
+	for (int i = 0; i < punkty.size(); i++)
+	{
+		punkty[i].wyswietl();
+		cout << endl;
+	}
+
+	cout << punkty.size() << endl;
+	for (int i = 0; i < punkty.size() - 2; i++)
+	{
+		for (int j = 1 + i; j < punkty.size() - 1; j++)
+		{
+			for (int k = j + 1; k < punkty.size(); k++)
+			{
+				if (wyznacznik_3(punkty[i], punkty[j], punkty[k]))
+				{
+					//cout << "xaxaxxaxaxaxaxaxaxax\n";
+					cout << i << " " << j << " " << k << endl;
+					count++;
+				}
+			}
+		}
+	}
+	cout << endl;
+	cout << "W danym zbiorze jest " << count << " trojek punktow wspolniowych.\n";
+}
+
+bool wyznacznik_3(Punkt_3D a, Punkt_3D b, Punkt_3D c)
+{
+	int t1, t2, t3;
+
+	t1 = (c.x - a.x) / (a.x - b.x);
+	t2 = (c.y - a.y) / (a.y - b.y);
+	t3 = (c.z - a.z) / (a.z - b.z);
+
+	//cout << endl << t1 << "  " << t2 << "  " << t3 << endl;
+	if ((t1 == t2) && (t1==t3))
+		return true;
+	else
+		return false;
+
 }

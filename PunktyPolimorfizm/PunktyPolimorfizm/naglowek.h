@@ -87,3 +87,5 @@ void inicjalizujPunkty(vector<vector<int>> liczby, Punkt **punkty, int size, vec
 bool wyznacznik_2(Punkt_2D a, Punkt_2D b, Punkt_2D c);
 
 void wspolniowos_2D(vector<Punkt_2D> punkty);
+void wspolniowosc_3D(vector<Punkt_3D> punkty);
+bool wyznacznik_3(Punkt_3D a, Punkt_3D b, Punkt_3D c);
