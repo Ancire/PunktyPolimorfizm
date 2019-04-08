@@ -20,7 +20,7 @@ public:
 	virtual void wyswietl() = 0;
 	virtual double dlugosc() = 0;
 
-	virtual void zapisz_do_pliku() = 0;
+	virtual void zapisz_do_pliku(const string path) = 0;
 };
 
 class Punkt_1D : public Punkt
@@ -32,7 +32,7 @@ public:
 
 	double dlugosc();
 
-	void zapisz_do_pliku();
+	void zapisz_do_pliku(const string path);
 };
 
 class Punkt_2D : public Punkt
@@ -44,7 +44,7 @@ public:
 
 	double dlugosc();
 
-	void zapisz_do_pliku();
+	void zapisz_do_pliku(const string path);
 };
 
 class Punkt_3D : public Punkt
@@ -58,7 +58,7 @@ public:
 
 	double dlugosc();
 
-	void zapisz_do_pliku();
+	void zapisz_do_pliku(const string path);
 };
 
 bool liczba(string napis);

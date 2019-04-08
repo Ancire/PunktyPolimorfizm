@@ -29,10 +29,10 @@ double Punkt_1D::dlugosc()
 	return sqrt(x*x);
 }
 
-void Punkt_1D::zapisz_do_pliku()
+void Punkt_1D::zapisz_do_pliku(const string path)
 {
 	fstream plik;
-	plik.open("dane.txt", ios::app);
+	plik.open(path, ios::app);
 
 	if (!plik.good() == true) {
 		cout << "Blad odczytu danych z pliku!\n";
@@ -62,10 +62,10 @@ double Punkt_2D::dlugosc()
 	return sqrt(x*x + y * y);
 }
 
-void Punkt_2D::zapisz_do_pliku()
+void Punkt_2D::zapisz_do_pliku(const string path)
 {
 	fstream plik;
-	plik.open("dane.txt", ios::app);
+	plik.open(path, ios::app);
 
 	if (!plik.good() == true) {
 		cout << "Blad odczytu danych z pliku!\n";
@@ -99,10 +99,10 @@ double Punkt_3D::dlugosc()
 	return sqrt(x * x + y * y + z * z);
 }
 
-void Punkt_3D::zapisz_do_pliku()
+void Punkt_3D::zapisz_do_pliku(const string path)
 {
 	fstream plik;
-	plik.open("dane.txt", ios::app);
+	plik.open(path, ios::app);
 
 	if (!plik.good() == true) {
 		cout << "Blad odczytu danych z pliku!\n";
@@ -126,7 +126,7 @@ bool liczba(string napis)
 	bool flaga = true;
 	for (int i = 0; i < napis.length(); i++)
 	{
-		if (napis[i] >= '0'&& napis[i] <= '9') {
+		if ((napis[i] >= '0' && napis[i] <= '9') || napis[i] == '-') {
 
 		}
 		else {
@@ -415,13 +415,27 @@ void menu()
 			liczby = vecStrintToInt(napisy);
 			punkty = new Punkt*[liczby.size()];
 			inicjalizujPunkty(liczby, punkty, liczby.size(),punkty_2d,punkty_3d);
+			for (int i = 0; i < liczby.size(); i++)
+			{
+				punkty[i]->zapisz_do_pliku(path);
+			}
 			_getch();
 			_getch();
 
 		}break;
 		case '3':
 		{
-			wyczyscPlik(path);
+			char a;
+			cout << "Czy na pewno chcesz usunac dane w pliku, dana akcja jest nieodwracalna? T/N \n";
+			cout << ">";
+			cin >> a;
+			if (a == 'T' || a == 't') {
+				wyczyscPlik(path);
+			}
+			else
+			{
+
+			}
 		}break;
 		case '4':
 		{
